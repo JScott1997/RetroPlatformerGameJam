@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @onready var game_manager = %GameManager
 
+@onready var camera_2d = $Camera2D
+
 @onready var animated_sprite = $AnimatedSprite2D
 
 const SPEED = 100.0
@@ -11,6 +13,8 @@ var direction = 0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+func _ready():
+	camera_2d.limit_left = -50
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -39,12 +43,26 @@ func _physics_process(delta):
 	
 	# Play animations
 	if is_on_floor():
-		if direction == 0:
-			animated_sprite.play("idle")
+		if direction == 0 && game_manager.rain_cloud:
+			animated_sprite.play("idle_rain")
+		elif direction == 0 && game_manager.acid_cloud:
+			animated_sprite.play("idle_acid")
+		elif direction == 0 && game_manager.lightening_cloud:
+			animated_sprite.play("idle_lightening")
 		else:
-			animated_sprite.play("run")
+			if game_manager.rain_cloud:
+				animated_sprite.play("run_rain")
+			elif game_manager.acid_cloud:
+				animated_sprite.play("run_acid")
+			elif game_manager.lightening_cloud:
+				animated_sprite.play("run_lightening")
 	else:
-		animated_sprite.play("jump")
+		if game_manager.rain_cloud:
+				animated_sprite.play("jump_rain")
+		elif game_manager.acid_cloud:
+				animated_sprite.play("jump_acid")
+		elif game_manager.lightening_cloud:
+				animated_sprite.play("jump_lightening")
 	
 	# Apply movement
 	if direction:

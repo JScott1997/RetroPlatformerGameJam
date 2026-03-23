@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://cars72paiy04p"]
+
+[ext_resource type="Texture2D" uid="uid://bla4r814h785h" path="res://assets/sprites/power-up-sprites.png" id="1_dwttv"]
+[ext_resource type="Script" path="res://scripts/level_portal.gd" id="1_i5ulr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1jqu"]
+atlas = ExtResource("1_dwttv")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_val6u"]
+atlas = ExtResource("1_dwttv")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxf4l"]
+atlas = ExtResource("1_dwttv")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdbbl"]
+atlas = ExtResource("1_dwttv")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r67b3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1jqu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_val6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxf4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdbbl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="level_portal" type="Area2D"]
+script = ExtResource("1_i5ulr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_r67b3")
+autoplay = "default"
+frame_progress = 0.560583
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://brfbdqerwckmk"]
+
+[ext_resource type="Texture2D" uid="uid://chmk8q5c7c0xn" path="res://assets/sprites/cloud-platformer-sprites.png" id="1_l8co6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_867m5"]
+atlas = ExtResource("1_l8co6")
+region = Rect2(128, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2v652"]
+atlas = ExtResource("1_l8co6")
+region = Rect2(160, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jkl5"]
+atlas = ExtResource("1_l8co6")
+region = Rect2(192, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxbfs"]
+atlas = ExtResource("1_l8co6")
+region = Rect2(224, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wq7jq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_867m5")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2v652")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jkl5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxbfs")
+}],
+"loop": true,
+"name": &"powered",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ji1ga"]
+size = Vector2(13, 29)
+
+[node name="power_rod" type="Area2D" groups=["rod"]]
+collision_layer = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_wq7jq")
+autoplay = "default"
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -14.5)
+shape = SubResource("RectangleShape2D_ji1ga")

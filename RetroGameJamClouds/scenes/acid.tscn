@@ -1,0 +1,116 @@
+[gd_scene load_steps=16 format=3 uid="uid://dfsxotwv0fstr"]
+
+[ext_resource type="Texture2D" uid="uid://chmk8q5c7c0xn" path="res://assets/sprites/cloud-platformer-sprites.png" id="1_fm11a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_go7ek"]
+atlas = ExtResource("1_fm11a")
+region = Rect2(64, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ht4fb"]
+atlas = ExtResource("1_fm11a")
+region = Rect2(96, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1hvc"]
+atlas = ExtResource("1_fm11a")
+region = Rect2(64, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kf4dq"]
+atlas = ExtResource("1_fm11a")
+region = Rect2(96, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4irfv"]
+atlas = ExtResource("1_fm11a")
+region = Rect2(64, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_017wb"]
+atlas = ExtResource("1_fm11a")
+region = Rect2(96, 224, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o37h4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_go7ek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ht4fb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1hvc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kf4dq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4irfv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_017wb")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bb41"]
+atlas = ExtResource("1_fm11a")
+region = Rect2(96, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pn46q"]
+atlas = ExtResource("1_fm11a")
+region = Rect2(64, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awc84"]
+atlas = ExtResource("1_fm11a")
+region = Rect2(96, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6fa2"]
+atlas = ExtResource("1_fm11a")
+region = Rect2(64, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58ip1"]
+atlas = ExtResource("1_fm11a")
+region = Rect2(96, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_do3de"]
+atlas = ExtResource("1_fm11a")
+region = Rect2(64, 224, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_afr8d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bb41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pn46q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awc84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6fa2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58ip1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_do3de")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="acid" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_o37h4")
+frame = 5
+frame_progress = 1.0
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 32)
+sprite_frames = SubResource("SpriteFrames_afr8d")
+frame = 5
+frame_progress = 1.0

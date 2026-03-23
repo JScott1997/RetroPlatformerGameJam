@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://dgg7virwyyely"]
+
+[ext_resource type="Texture2D" uid="uid://bla4r814h785h" path="res://assets/sprites/power-up-sprites.png" id="1_7nt2b"]
+[ext_resource type="Script" path="res://scripts/acid_power.gd" id="1_rh57i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_haker"]
+atlas = ExtResource("1_7nt2b")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blafb"]
+atlas = ExtResource("1_7nt2b")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhe4w"]
+atlas = ExtResource("1_7nt2b")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6v7po"]
+atlas = ExtResource("1_7nt2b")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sbdwh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_haker")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blafb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhe4w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6v7po")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fxj03"]
+radius = 6.0
+
+[node name="acid_power" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_rh57i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_sbdwh")
+autoplay = "default"
+frame_progress = 0.301432
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_fxj03")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

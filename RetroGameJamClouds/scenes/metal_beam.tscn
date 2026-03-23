@@ -1,0 +1,95 @@
+[gd_scene load_steps=13 format=3 uid="uid://6p4f4r7uyvmx"]
+
+[ext_resource type="Texture2D" uid="uid://chmk8q5c7c0xn" path="res://assets/sprites/cloud-platformer-sprites.png" id="1_o5mok"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1abw"]
+atlas = ExtResource("1_o5mok")
+region = Rect2(0, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftsx4"]
+atlas = ExtResource("1_o5mok")
+region = Rect2(32, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_waibx"]
+atlas = ExtResource("1_o5mok")
+region = Rect2(64, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxyge"]
+atlas = ExtResource("1_o5mok")
+region = Rect2(96, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjra4"]
+atlas = ExtResource("1_o5mok")
+region = Rect2(128, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkkhj"]
+atlas = ExtResource("1_o5mok")
+region = Rect2(160, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ar6yy"]
+atlas = ExtResource("1_o5mok")
+region = Rect2(192, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6jhw"]
+atlas = ExtResource("1_o5mok")
+region = Rect2(224, 192, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dc0tq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1abw")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ftsx4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_waibx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxyge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjra4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pkkhj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ar6yy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6jhw")
+}],
+"loop": false,
+"name": &"melt",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2pi4r"]
+size = Vector2(32, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_llc0k"]
+size = Vector2(32, 11)
+
+[node name="metal_beam" type="Area2D" groups=["beam"]]
+collision_layer = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dc0tq")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_2pi4r")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_llc0k")

@@ -1,0 +1,103 @@
+[gd_scene load_steps=15 format=3 uid="uid://ds0jlhh2lsgte"]
+
+[ext_resource type="Texture2D" uid="uid://chmk8q5c7c0xn" path="res://assets/sprites/cloud-platformer-sprites.png" id="1_uonqc"]
+[ext_resource type="PackedScene" uid="uid://b27m02dr35okd" path="res://scenes/killzone.tscn" id="2_uk6w4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwwdk"]
+atlas = ExtResource("1_uonqc")
+region = Rect2(128, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dn3q"]
+atlas = ExtResource("1_uonqc")
+region = Rect2(160, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4hyy"]
+atlas = ExtResource("1_uonqc")
+region = Rect2(192, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3u4c"]
+atlas = ExtResource("1_uonqc")
+region = Rect2(128, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtg6e"]
+atlas = ExtResource("1_uonqc")
+region = Rect2(224, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hj5w"]
+atlas = ExtResource("1_uonqc")
+region = Rect2(160, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xn8bv"]
+atlas = ExtResource("1_uonqc")
+region = Rect2(224, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkr6p"]
+atlas = ExtResource("1_uonqc")
+region = Rect2(192, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbbxx"]
+atlas = ExtResource("1_uonqc")
+region = Rect2(224, 224, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_45nht"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwwdk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dn3q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4hyy")
+}],
+"loop": true,
+"name": &"idle_fire",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3u4c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtg6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hj5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xn8bv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkr6p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbbxx")
+}],
+"loop": false,
+"name": &"remove_fire",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s2sx2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vemfo"]
+
+[node name="fire" type="Area2D" groups=["fire"]]
+collision_layer = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_45nht")
+animation = &"idle_fire"
+autoplay = "idle_fire"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("CircleShape2D_s2sx2")
+
+[node name="killzone" parent="." instance=ExtResource("2_uk6w4")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
+position = Vector2(0, -10)
+shape = SubResource("CircleShape2D_vemfo")
